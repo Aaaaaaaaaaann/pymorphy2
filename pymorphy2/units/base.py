@@ -67,8 +67,8 @@ class BaseAnalyzerUnit(object):
         """
         if cls.__init__ is object.__init__:
             return []
-        args, varargs, kw, default = inspect.getargspec(cls.__init__)
-        return sorted(args[1:])
+        arg_spec = inspect.getfullargspec(cls.__init__)
+        return sorted(arg_spec.args[1:])
 
     def _get_params(self):
         """ Return a dict with the parameters for this analyzer unit. """
